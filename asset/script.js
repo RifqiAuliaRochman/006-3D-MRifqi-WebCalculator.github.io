@@ -24,6 +24,10 @@ function inputDigit(digit) {
     }
 }
 
+function del() {
+    calculator.displayNumber = calculator.displayNumber.toString().slice(0, -1)
+}
+
 function inverseNumber() {
     if (calculator.displayNumber === '0') {
         return
@@ -81,6 +85,12 @@ for(let button of buttons) {
             updateDisplay();
             return;
         }
+        
+        if (target.classList.contains('delete')){
+            del()
+            updateDisplay()
+            return
+        }
 
         if (target.classList.contains('negative')) {
             inverseNumber()
@@ -98,6 +108,7 @@ for(let button of buttons) {
             handleOperator(target.innerText)
             return
         }
+
 
 
         inputDigit(target.innerText);
